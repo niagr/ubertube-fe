@@ -4,34 +4,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     mode: 'development',
-	entry: ["./src/index.ts"],
+	entry: ["./src/index.tsx"],
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),
-		// publicPath: "http://localhost:8080/",
 	},
 	devtool: 'source-map',
-	// devServer: {
-	// 	headers: {
-	// 		"Access-Control-Allow-Origin": "*",
-	// 		"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-	// 		"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-	// 	},
-	// 	historyApiFallback: true, // For react-router
-	// },
+	resolve: {
+		extensions: ['.ts', '.tsx', '.js']
+	},
 	module: {
 		rules: [
-			// {
-			// 	test: /\.jsx?$/,
-			// 	use: {
-			// 		loader: "babel-loader",
-			// 		options: {
-			// 			babelrc: false,
-			// 			presets: ["@babel/preset-env", "@babel/preset-react"],
-			// 			plugins: ["@babel/plugin-proposal-object-rest-spread", "@babel/plugin-proposal-class-properties"]
-			// 		}
-			// 	}
-            // },
             {
                 test: /\.tsx?$/,
                 use: {
@@ -69,7 +52,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			// template: "./src/index.html"
+			template: "./src/index.html"
 		})
 	]
 }
